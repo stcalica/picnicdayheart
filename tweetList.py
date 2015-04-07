@@ -43,13 +43,13 @@ class StdOutListener(tweepy.StreamListener):
 			media = status.entities['media'][0]['media_url']
 			url = json.dumps(media)
 			media_url = url.strip(' " ')
+			gather = text + " | " + media_url
+			s.send(gather)
+			print gather
+		
 		except: 
-			media_url = "No Media"
+			pass
 		
-		gather = text + " | " + media_url
-		
-		s.send(gather)
-		print gather
 		return True
 # once we have an api object and a status listener we can create our stream object
 
